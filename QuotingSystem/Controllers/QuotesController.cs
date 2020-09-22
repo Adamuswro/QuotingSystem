@@ -94,7 +94,6 @@ namespace QuotingSystem.Controllers
             return View(quote);
         }
 
-        [HttpGet]
         public ActionResult CreateQuote(int? minPN, int? minTemp)
         {
             QuotingSystemDbEntities db = new QuotingSystemDbEntities();
@@ -133,6 +132,28 @@ namespace QuotingSystem.Controllers
             TempData["QuoteAdded"] = $"New quote (Id: {newQuote.QuoteId}) successfully added!";
 
             return RedirectToAction("Index");
+        }
+
+        public ActionResult EditQuote(int quoteId, int? minPN, int? minTemp)
+        {
+            QuotingSystemDbEntities db = new QuotingSystemDbEntities();
+            var quote = db.Quotes.SingleOrDefault(q => q.QuoteId == quoteId);
+            if (quote==null)
+            {
+                return HttpNotFound();
+            }
+
+            var filteredProducts = db.Products.ToList();
+            if (minPN != null)
+                filteredProducts = filteredProducts.Where(p => p.PN >= minPN).ToList();
+            if (minTemp != null)
+                filteredProducts = filteredProducts.Where(p => p.Temp >= minTemp).ToList();
+
+            /*Product PrefferedProduct = filteredProducts.Select(p=> p.Price.Equals(filteredProducts.Select(c=>c.Price).Min));
+
+            CreateQuoteViewModel vm = new CreateQuoteViewModel(minPN, minTemp, );
+            */
+            return View();
         }
     }
 }

@@ -35,7 +35,7 @@
                 <td>@Html.DisplayFor(modelItem => quote.SelectedProduct.Price)</td>
 
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Edit", "Edit", new { id= quote.QuoteId }) |
                     @Html.ActionLink("Details", "Details", new { id= quote.QuoteId }) |
                     @Html.ActionLink("Delete", "Delete", new { id = quote.QuoteId })
                 </td>
