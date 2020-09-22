@@ -1,0 +1,31 @@
+﻿@model QuotingSystem.ViewModels.CreateQuoteViewModel
+
+<h2>Found products with given criteria</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FilteredProducts.First().Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FilteredProducts.First().PN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FilteredProducts.First().Temp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FilteredProducts.First().Price)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var product in Model.FilteredProducts) {
+    <tr @(product.ProductId == Model.PrefferedProduct.ProductId ? "bgcolor= \"green\"" : "")>
+        <td>@Html.DisplayFor(modelItem => product.Name)</td>
+        <td>@Html.DisplayFor(modelItem => product.PN)</td>
+        <td>@Html.DisplayFor(modelItem => product.Temp)</td>
+        <td>@Html.DisplayFor(modelItem => product.Price)</td>
+    </tr>
+}
+
+</table>

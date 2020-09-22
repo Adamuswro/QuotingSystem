@@ -1,0 +1,63 @@
+﻿@model QuotingSystem.ViewModels.CreateQuoteViewModel
+
+@{
+    ViewBag.Title = "Create new quote";
+}
+
+<h2>Create new quote</h2>
+
+<div>
+    @using (Html.BeginForm("CreateQuote", "Quotes"))
+    {
+        @Html.AntiForgeryToken()
+
+        <h4>Customers</h4><br />
+        @Html.DropDownListFor(m => m.SelectedCustomerId, Model.AvaliableCustomers)
+
+        <br />
+
+        <h4>Products</h4><br />
+        @Html.DropDownListFor(m => m.SelectedProductId, Model.AvaliableProducts)
+
+        <input type="submit" value="Send" />
+    }
+</div>
+
+<div style="border:solid" border:1px solid black margin: auto text-align: center>
+    @using (Html.BeginForm("CreateQuote", "Quotes", FormMethod.Get))
+    {
+        <dt>@Html.DisplayNameFor(model => model.MinPN)</dt>
+        <dd>@Html.EditorFor(model => model.MinPN)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.MinTemp)</dt>
+        <dd>@Html.EditorFor(model => model.MinTemp)</dd>
+
+        <input type="submit" value="Search" />
+    }
+
+    @Html.Partial("_ShowProductsPartial")
+</div>
+    @*<input type="text" id="TextBox1" />
+
+        <h2>Records</h2>
+        <table style="border: 1px solid black;">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Company</th>
+                <th>Industry</th>
+                <th>Rank</th>
+            </tr>
+            @foreach (ProjectName.Models.Records item in Model)
+            {
+                <tr style="border: 1px solid black;">
+                    <td>@item.ID</td>
+                    <td>@item.Name</td>
+                    <td>@item.Company</td>
+                    <td>@item.Industry</td>
+                    <td>@item.Rank</td>
+
+                </tr>
+            }
+        </table>*@
+

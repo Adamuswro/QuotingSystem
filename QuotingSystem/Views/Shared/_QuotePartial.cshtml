@@ -1,0 +1,18 @@
+﻿@model QuotingSystem.Models.Quote
+
+<div>
+    <dt>@Html.DisplayNameFor(model => model.CreationDate)</dt>
+    <dd>@Html.DisplayFor(model => model.CreationDate)</dd>
+
+    <dt>@Html.DisplayNameFor(model => model.LastChangedDate)</dt>
+    <dd>@Html.DisplayFor(model => model.LastChangedDate)</dd>
+
+    <dt>@Html.DisplayNameFor(model => model.SelectedCustomer)</dt>
+    <dd>@Html.DisplayFor(model => model.SelectedCustomer.Name)</dd>
+
+    <dt>@Html.DisplayNameFor(model => model.SelectedProduct)</dt>
+    <dd>@Html.DisplayFor(model => model.SelectedProduct.Name)</dd>
+
+    <dt>@Html.DisplayNameFor(model => model.SelectedProduct.Price)</dt>
+    <dd>@Html.DisplayFor(model => model.SelectedProduct.Price)</dd>
+</div>

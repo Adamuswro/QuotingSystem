@@ -1,21 +1,34 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace QuotingSystem.Models
 {
-    public class Quote
+    public class Quote : ITrackable
     {
         //Alternative: [Key] property, suffix Id means key for EF naming convention
+        [ScaffoldColumn(false)]
         public int QuoteId { get; set; }
-        [Required(ErrorMessage ="Quote name is required")]
-        public string Name { get; set; }
-        [Required(ErrorMessage = "PN is required")]
-        public int PN { get; set; }
-        public int Temp { get; set; }
-        public Money Price { get; set; }
 
+        //Alternative: 
+        [ScaffoldColumn(false)]
+        [DataType(DataType.DateTime)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
+        [Display(Name ="Creation")]
+        public DateTime CreationDate { get; set; }
+
+        [ScaffoldColumn(false)]
+        [DataType(DataType.DateTime)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
+        [Display(Name = "Last changed")]
+        public DateTime LastChangedDate { get; set; }
+
+        [Required(ErrorMessage = "Customer is reqiured!")]
+        [Display(Name = "Customer")]
+        public virtual Customer SelectedCustomer { get; set; }
+
+        [Required(ErrorMessage = "Product selection is reqiured!")]
+        [Display(Name = "Product")]
+        public virtual Product SelectedProduct { get; set; }
     }
 }

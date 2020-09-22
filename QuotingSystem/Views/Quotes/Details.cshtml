@@ -1,0 +1,17 @@
+﻿    @model QuotingSystem.Models.Quote
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    @Html.Partial("_QuotePartial")
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.QuoteId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>
