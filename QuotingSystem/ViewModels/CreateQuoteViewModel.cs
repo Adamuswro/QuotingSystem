@@ -10,7 +10,7 @@ namespace QuotingSystem.ViewModels
         public CreateQuoteViewModel()
         {
 
-        }
+        }//added comment
         public CreateQuoteViewModel(int? minPN, int? minTemp, List<Product> products, Product prefferedProduct, List<Customer> customers)
         {
             MinPN = minPN ?? 0;
